@@ -8,7 +8,7 @@ import com.opencsv.CSVReader;
 public class ImplCsvFileReader implements CsvFileReader {
 
     // Config File with questions
-    private String csvFile;
+    private final String csvFile;
     // Counter of strings that have been read
     private Integer readStrCounter;
 
