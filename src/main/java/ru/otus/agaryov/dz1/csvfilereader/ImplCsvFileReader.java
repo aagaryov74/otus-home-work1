@@ -26,12 +26,12 @@ public class ImplCsvFileReader implements CsvFileReader {
             String[] line;
             while ((line = reader.readNext()) != null) {
                     qaMap.put(line[0], line[1]);
-                    //System.out.println("Q = "+ line[0] + ", A = "+ line[1]);
                     this.readStrCounter++;
             }
         } catch (IOException | ArrayIndexOutOfBoundsException e) {
-            System.err.println("Error at reading " + csvFile + ": "
+            System.err.println("Error at reading config file  " + csvFile + ": "
                     + e.toString());
+
         }
         return qaMap;
     }

@@ -10,4 +10,8 @@
     <bean id="checker" class="ru.otus.agaryov.dz1.results.ImplResultChecker">
         <constructor-arg name="csvFileReader" ref="csvFileReader"/>
     </bean>
+    <bean id="examinator" class="ru.otus.agaryov.dz1.exam.ExamExecutor">
+        <constructor-arg name="csvFileReader" ref="csvFileReader"/>
+        <constructor-arg name="resultChecker" ref="checker"/>
+    </bean>
 </beans>
