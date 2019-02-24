@@ -1,11 +1,12 @@
 package ru.otus.agaryov.dz1.csvfilereader;
 
 
+import javafx.util.Pair;
 import org.junit.jupiter.api.Test;
 
 import org.mockito.Mockito;
-import ru.otus.agaryov.dz1.results.IResultChecker;
 import ru.otus.agaryov.dz1.results.ResultChecker;
+import ru.otus.agaryov.dz1.results.ImplResultChecker;
 
 import java.util.LinkedHashMap;
 
@@ -17,7 +18,7 @@ class dz1Test {
 
     @Test
     void checkAnswers() {
-        ICsvFileReader reader = mock(ICsvFileReader.class);
+        CsvFileReader reader = mock(CsvFileReader.class);
         LinkedHashMap<String,String> cMap = new LinkedHashMap<>();
         // Не написали еще чтение из файла в мапу, но уже хотим проверить, как ответопроверятель работает
         cMap.put("Сколько колес у Машины","2");
@@ -27,9 +28,9 @@ class dz1Test {
 
         when(reader.readCsvIntoMap()).thenReturn(cMap);
         // Ответопроверятель
-        IResultChecker resChecker = new ResultChecker(reader);
+        ResultChecker resChecker = new ImplResultChecker(reader);
         // Прокладка
-        IResultChecker sChecker = Mockito.spy(resChecker);
+        ResultChecker sChecker = Mockito.spy(resChecker);
 
         sChecker.checkAnswer("Сколько ног у Мальвины", "2");
         sChecker.checkAnswer("Сколько месяцев в году", "12");

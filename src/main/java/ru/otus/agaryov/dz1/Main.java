@@ -1,9 +1,9 @@
 package ru.otus.agaryov.dz1;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import ru.otus.agaryov.dz1.csvfilereader.ICsvFileReader;
-import ru.otus.agaryov.dz1.results.IResultChecker;
+import ru.otus.agaryov.dz1.csvfilereader.CsvFileReader;
 import ru.otus.agaryov.dz1.results.ResultChecker;
+import ru.otus.agaryov.dz1.results.ImplResultChecker;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,8 +15,8 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("/spring-context.xml");
-        ICsvFileReader csvFile = context.getBean(ICsvFileReader.class);
-        IResultChecker checker = context.getBean(ResultChecker.class);
+        CsvFileReader csvFile = context.getBean(CsvFileReader.class);
+        ResultChecker checker = context.getBean(ImplResultChecker.class);
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
