@@ -4,10 +4,14 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="csvFileReader" class="ru.otus.agaryov.dz1.csvfilereader.CsvFileReader">
+    <bean id="csvFileReader" class="ru.otus.agaryov.dz1.csvfilereader.ImplCsvFileReader">
         <constructor-arg index="0" value="./QuestionsAndAnswers.csv"/>
     </bean>
-    <bean id="checker" class="ru.otus.agaryov.dz1.results.ResultChecker">
+    <bean id="checker" class="ru.otus.agaryov.dz1.results.ImplResultChecker">
         <constructor-arg name="csvFileReader" ref="csvFileReader"/>
+    </bean>
+    <bean id="examinator" class="ru.otus.agaryov.dz1.exam.ExamExecutor">
+        <constructor-arg name="csvFileReader" ref="csvFileReader"/>
+        <constructor-arg name="resultChecker" ref="checker"/>
     </bean>
 </beans>
